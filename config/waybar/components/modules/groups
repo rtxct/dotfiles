@@ -1,0 +1,31 @@
+{
+  "group/middle-left": {
+      "orientation": "horizontal",
+      "modules": ["pulseaudio"],
+      "tooltip": false
+  },
+
+  "group/corner-left": {
+      "orientation": "horizontal",
+      "modules": ["custom/notification", "clock", "custom/pacman", "tray"],
+      "tooltip": false
+  },
+
+  "group/left": {
+      "orientation": "horizontal",
+      "modules": ["custom/colorpicker", "custom/printscreen"],
+      "tooltip": false
+  },
+
+  "group/corner-right": {
+      "orientation": "horizontal",
+      "modules": ["custom/power"],
+      "tooltip": false
+  },
+
+  "group/right": {
+      "orientation": "horizontal",
+      "modules": ["group/expand-performance", "custom/endpoint", "bluetooth", "network", "battery"],
+      "tooltip": false
+  },
+}

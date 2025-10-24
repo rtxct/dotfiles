@@ -1,0 +1,69 @@
+{
+  "custom/previous": {
+      "format": "",
+      "on-click": "playerctl previous",
+      "tooltip": false
+  },
+
+  "mpris": {
+      "format": "{status_icon}",
+      "format-paused": "{status_icon}",
+      "player-icons": {
+          "default": "▶",
+          "mpv": "🎵"
+      },
+      "status-icons": {
+          "paused": "⏸"
+      },
+      "ignored-players": ["firefox"],
+      "on-click": "playerctl play-pause",
+  },
+
+  "custom/next": {
+      "format": "",
+      "on-click": "playerctl next",
+      "tooltip": "Next"
+  },
+
+  "pulseaudio": {
+      "format": "{icon} {volume}%   {format_source}",
+      "format-bluetooth": " {volume}% {format_source}",
+      "format-bluetooth-muted": "󰂲 {format_source}",
+      "format-muted": "󰸈  {format_source}",
+      "format-source": "󰍬 {volume}%",
+      "format-source-muted": "󰍭 ",
+      "format-icons": {
+          "headphone": "",
+          "hands-free": "",
+          "headset": "",
+          "phone": "",
+          "portable": "",
+          "default": [" ", " ", " "]
+      },
+      "on-click": "amixer set Master toggle",
+      "on-click-right": "amixer set Capture toggle",
+      "tooltip": false
+  },
+
+  "hyprland/window": {
+      "format": "<span font='22'>󰣇</span>",
+      /* "icon": true, */
+      "on-click": "pavucontrol",
+      "on-click-right": "easyeffects",
+      "tooltip": false
+  },
+
+  "hyprland/workspaces": {
+      "format": "{icon}",
+      "format-icons": {
+          "active": "󰝤",
+          "default": "󰝤",
+          "empty": "󰝤"
+      },
+      "persistent-workspaces": {
+          "*": [1,2,3]
+      },
+      "tooltip": false,
+      "on-click-right": ""
+  },
+}

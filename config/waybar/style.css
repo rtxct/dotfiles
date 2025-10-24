@@ -1,0 +1,41 @@
+@define-color dark0 rgb (00, 00, 00);
+@define-color dark1 rgb (37, 37, 37);
+@define-color dark2 rgb (61, 61, 61);
+@define-color dark3 rgb (85, 85, 85);
+
+@define-color light0 rgb (216, 222, 233);
+@define-color light1 rgb (229, 233, 240);
+@define-color light2 rgb (236, 239, 244);
+
+@define-color frost0 rgb (255, 255, 255);
+@define-color frost1 rgb (255, 255, 255);
+@define-color frost2 rgb (250, 249, 246);
+@define-color frost3 rgb (255, 255, 255);
+
+* {
+    font-size: 18px;
+    font-family: "JetBrainsMono Nerd Font";
+    margin-bottom: -2;
+    margin-top: -2;
+}
+
+window#waybar{
+    all: unset;
+}
+
+tooltip {
+    border: 1px solid @frost3;
+    background: alpha(@dark0, .8);
+}
+
+tooltip label {
+    color: @light2;
+}
+
+@import "components/styles/expandables.css";
+@import "components/styles/groups.css";
+@import "components/styles/middle.css";
+@import "components/styles/left.css";
+@import "components/styles/right.css";
+@import "components/styles/utils.css";
+

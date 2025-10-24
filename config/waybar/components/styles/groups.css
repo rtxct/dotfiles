@@ -1,0 +1,32 @@
+
+#left {
+    padding: 5px 9px;
+    margin: 5px 10px 5px 0;
+    /* border: 1px solid alpha(@frost3, .4); */
+    /* border-radius: 10px; */
+    /* background-color: alpha(@dark0, .4); */
+}
+
+.modules-center {
+    padding: 0 7px;
+    margin: 5px 10px 5px 0;
+    /* border: 1px solid alpha(@frost3, .4); */
+    /* border-radius: 10px; */
+    /* background-color: alpha(@dark0, .4); */
+}
+
+#right {
+    padding: 0 7px;
+    margin: 5px 10px 5px 0;
+    /* border: 1px solid alpha(@frost3, .4); */
+    /* border-radius: 10px; */
+    /* background-color: alpha(@dark0, .4); */
+}
+
+#corner-left {
+    padding: 0 7px;
+    margin: 5px 10px 5px 0;
+    /* border: 1px solid alpha(@frost3, .4); */
+    /* border-radius: 10px; */
+    /* background-color: alpha(@dark0, .4); */
+}

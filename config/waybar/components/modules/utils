@@ -1,0 +1,11 @@
+{
+  "custom/endpoint":{
+      "format": "|",
+      "tooltip": false
+  },
+
+  "custom/left-arrow": {
+      "format": "",
+      "tooltip": false
+  },
+}

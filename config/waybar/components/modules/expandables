@@ -1,0 +1,23 @@
+{
+  "group/expand-middle-left": {
+      "orientation": "horizontal",
+      "drawer": {
+          "transition-duration": 600,
+          "transition-right-to-left": true,
+          "click-to-reveal": true
+      },
+      "modules": ["custom/left-arrow", "group/middle-left"],
+      "tooltip": false
+  },
+
+  "group/expand-performance": {
+      "orientation": "horizontal",
+      "drawer": {
+          "transition-duration": 600,
+          "transition-right-to-left": true,
+          "click-to-reveal": true
+      },
+      "modules": ["custom/left-arrow", "cpu", "memory", "temperature"],
+      "tooltip": false
+  },
+}

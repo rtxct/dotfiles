@@ -1,0 +1,19 @@
+#custom-left-arrow {
+    color: alpha(@dark3, 1);
+    padding: 0px 5px;
+    text-shadow: 0px 0px 2px alpha(@frost1, 1);
+    transition: all .3s ease; 
+}
+
+#custom-left-arrow:hover{
+    color: alpha(@light0, .8);
+    text-shadow: 0px 0px 2px alpha(@frost1, 1);
+}
+
+#custom-endpoint {
+    font-size: 12px;
+    color: alpha(@light0, .8);
+    margin: 0 5px;
+    text-shadow: 0px 0px 2px alpha(@frost1, 1);
+}
+
