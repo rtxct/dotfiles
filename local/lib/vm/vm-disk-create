@@ -2,7 +2,7 @@
 
 set -e
 
-MSG="Usage: disk create <outpu-path> <size>\nCreate new .qcow2 virtual disk"
+MSG="Usage: disk create <output-path> <size>\nCreate new .qcow2 virtual disk"
 
 if [ "$1" = "help" ] || [ "$1" = "h" ]; then
   echo -e "$MSG"

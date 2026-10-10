@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -e
+
+MSG="Usage: snapshot create <vm-name> <snapshot-name> [description]\nCreate a snapshot of a VM"
+
+if [ "$1" = "help" ] || [ "$1" = "h" ]; then
+  echo -e "$MSG"
+  exit 0
+fi
+
+if [[ $# -lt 2 ]]; then
+  echo -e "$MSG"
+  exit 1
+fi
+
+VM_NAME="$1"
+SNAP_NAME="$2"
+DESC="${3:-}"
+
+if [[ -n "$DESC" ]]; then
+  virsh snapshot-create-as "$VM_NAME" "$SNAP_NAME" "$DESC"
+else
+  virsh snapshot-create-as "$VM_NAME" "$SNAP_NAME"
+fi
+
+if [[ $? -eq 0 ]]; then
+  echo "Snapshot '$SNAP_NAME' created successfully for VM '$VM_NAME'"
+else
+  echo "Failed to create snapshot"
+  exit 2
+fi

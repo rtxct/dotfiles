@@ -1,0 +1,88 @@
+#!/bin/bash
+
+set -e
+
+MSG="Usage: generate <vm-name> <output-xml> [memory-mb] [vcpus]\nGenerate a default XML configuration for a new VM"
+
+if [ "$1" = "help" ] || [ "$1" = "h" ]; then
+  echo -e "$MSG"
+  exit 0
+fi
+
+if [[ $# -lt 2 ]]; then
+  echo -e "$MSG"
+  exit 1
+fi
+
+VM_NAME="$1"
+OUT_FILE="$2"
+MEM_MB="${3:-2048}"
+VCPUS="${4:-2}"
+
+# Convert MB to KiB for libvirt
+MEM_KIB=$((MEM_MB * 1024))
+
+echo "Generating default XML for VM '$VM_NAME' into '$OUT_FILE'..."
+
+cat <<EOF > "$OUT_FILE"
+<domain type='kvm'>
+  <name>$VM_NAME</name>
+  <memory unit='KiB'>$MEM_KIB</memory>
+  <currentMemory unit='KiB'>$MEM_KIB</currentMemory>
+  <vcpu placement='static'>$VCPUS</vcpu>
+  <os>
+    <type arch='x86_64'>hvm</type>
+    <boot dev='hd'/>
+    <boot dev='cdrom'/>
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+  </features>
+  <cpu mode='host-passthrough' check='none'/>
+  <clock offset='utc'>
+    <timer name='rtc' tickpolicy='catchup'/>
+    <timer name='pit' tickpolicy='delay'/>
+    <timer name='hpet' present='no'/>
+  </clock>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>destroy</on_crash>
+  <devices>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='/var/lib/libvirt/images/${VM_NAME}.qcow2'/>
+      <target dev='vda' bus='virtio'/>
+    </disk>
+    <disk type='file' device='cdrom'>
+      <driver name='qemu' type='raw'/>
+      <target dev='sda' bus='sata'/>
+      <readonly/>
+    </disk>
+    <interface type='network'>
+      <source network='default'/>
+      <model type='virtio'/>
+    </interface>
+    <serial type='pty'>
+      <target type='isa-serial' port='0'>
+        <model name='isa-serial'/>
+      </target>
+    </serial>
+    <console type='pty'>
+      <target type='serial' port='0'/>
+    </console>
+    <input type='tablet' bus='usb'>
+      <model name='usb-tablet'/>
+    </input>
+    <graphics type='spice' autoport='yes'>
+      <listen type='address' address='127.0.0.1'/>
+    </graphics>
+    <video>
+      <model type='qxl'/>
+    </video>
+  </devices>
+</domain>
+EOF
+
+echo "Success! You can now edit '$OUT_FILE' as needed."
+echo "Use 'vm create $OUT_FILE' to define it when ready."

@@ -5,7 +5,12 @@
 #   exit 1
 # fi
 
-VM_LIB_DIR="/usr/local/lib/vm"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)"
+VM_LIB_DIR="${SCRIPT_DIR}/../lib/vm"
+
+if [[ ! -d "$VM_LIB_DIR" ]]; then
+  VM_LIB_DIR="/usr/local/lib/vm"
+fi
 
 # Join args as command path
 if [[ $# -eq 0 ]]; then
@@ -25,7 +30,7 @@ for (( i=$#; i>0; i-- )); do
   fi
 done
 
-echo "Unkonw command: $*"
+echo "Unknown command: $*"
 echo "Available commands"
 
 for f in "$VM_LIB_DIR"/vm-*; do

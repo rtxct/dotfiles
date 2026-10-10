@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -e
+
+MSG="Usage: display <vm-name>\nOpen the graphical viewer for the VM (VNC/Spice)"
+
+if [ "$1" = "help" ] || [ "$1" = "h" ]; then
+  echo -e "$MSG"
+  exit 0
+fi
+
+if [[ $# -ne 1 ]]; then
+  echo -e "$MSG"
+  exit 1
+fi
+
+VM_NAME="$1"
+
+echo "Launching graphical viewer for VM '$VM_NAME'..."
+# Runs in the background so it doesn't block the terminal
+nohup virt-viewer "$VM_NAME" > /dev/null 2>&1 &

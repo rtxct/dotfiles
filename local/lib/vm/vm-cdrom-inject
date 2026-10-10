@@ -25,7 +25,7 @@ fi
 virsh change-media "$VM_NAME" hdc "$CDROM_PATH" --insert --live --config
 
 if [[ $? -eq 0 ]]; then
-  echo "Successfully inserted CDROM '$CDROM_PATH' into VM '$MV_NAME'"
+  echo "Successfully inserted CDROM '$CDROM_PATH' into VM '$VM_NAME'"
   exit 0
 fi
 

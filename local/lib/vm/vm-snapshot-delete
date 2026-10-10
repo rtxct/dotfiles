@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+MSG="Usage: snapshot delete <vm-name> <snapshot-name>\nDelete a snapshot"
+
+if [ "$1" = "help" ] || [ "$1" = "h" ]; then
+  echo -e "$MSG"
+  exit 0
+fi
+
+if [[ $# -ne 2 ]]; then
+  echo -e "$MSG"
+  exit 1
+fi
+
+virsh snapshot-delete "$1" "$2"
+
+if [[ $? -eq 0 ]]; then
+  echo "Snapshot '$2' deleted for VM '$1'"
+else
+  echo "Failed to delete snapshot"
+  exit 2
+fi

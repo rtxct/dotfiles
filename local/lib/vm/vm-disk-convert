@@ -2,7 +2,7 @@
 
 set -e
 
-MSG="Usage: disk convert <source-format> <output-format> <disk-path> <output-path>\nConvert the given disk to the desire destination and format\nFormats: vmdk, raw, qcow2, vdi, vpc"
+MSG="Usage: disk convert <output-format> <source-path> <output-path>\nConvert the given disk to the desire destination and format\nFormats: vmdk, raw, qcow2, vdi, vpc"
 
 if [ "$1" = "help" ] || [ "$1" = "h" ]; then
   echo -e "$MSG"
@@ -20,7 +20,7 @@ DEST_PATH="$3"
 
 if [[ "$DEST_FORMAT" != "vmdk" && "$DEST_FORMAT" != "raw" && "$DEST_FORMAT" != "qcow2" && "$DEST_FORMAT" != "vdi" && "$DEST_FORMAT" != "vpc" ]]; then
   echo "Invalid format: $DEST_FORMAT"
-  echo "Valid options: vmdk, rawm, qcow2, vpc"
+  echo "Valid options: vmdk, raw, qcow2, vpc"
   exit 3
 fi
 

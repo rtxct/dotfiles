@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -e
+
+MSG="Usage: snapshot revert <vm-name> <snapshot-name>\nRevert a VM to a previous snapshot"
+
+if [ "$1" = "help" ] || [ "$1" = "h" ]; then
+  echo -e "$MSG"
+  exit 0
+fi
+
+if [[ $# -ne 2 ]]; then
+  echo -e "$MSG"
+  exit 1
+fi
+
+VM_NAME="$1"
+SNAP_NAME="$2"
+
+virsh snapshot-revert "$VM_NAME" "$SNAP_NAME"
+
+if [[ $? -eq 0 ]]; then
+  echo "VM '$VM_NAME' successfully reverted to snapshot '$SNAP_NAME'"
+else
+  echo "Failed to revert snapshot"
+  exit 2
+fi

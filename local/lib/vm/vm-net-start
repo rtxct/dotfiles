@@ -22,7 +22,7 @@ if virsh net-info "$NETWORK" 2>/dev/null | grep -q "Active:. yes"; then
 fi
 
 if virsh net-start "$NETWORK"; then
-  echo "Network '$NETWORK' started successfylly"
+  echo "Network '$NETWORK' started successfully"
   exit 0
 fi
   
