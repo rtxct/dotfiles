@@ -1,0 +1,79 @@
+add_newline = false
+command_timeout = 1000
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$java\
+$kubernetes\
+$docker_context\
+$cmd_duration\
+$character"""
+
+[directory]
+style = "white"
+format = "[$path]($style)"
+home_symbol = "•"
+truncation_length = 3
+truncation_symbol = "…"
+truncate_to_repo = false
+
+[git_branch]
+symbol = " "
+style = "white"
+format = " [$symbol$branch]($style)"
+truncation_length = 12
+truncation_symbol = "…"
+
+[git_status]
+style = "242"
+format = " [$all_status$ahead_behind]($style)"
+modified = "!"
+untracked = "?"
+staged = "+"
+deleted = "-"
+renamed = "»"
+conflicted = "="
+stashed = "\\$"
+
+[python]
+symbol = ""
+style = "242"
+format = " [${pyenv_prefix}${version}( $virtualenv)]($style)"
+
+[nodejs]
+symbol = ""
+style = "242"
+format = " [$version]($style)"
+
+[java]
+symbol = ""
+style = "242"
+format = " [$version]($style)"
+
+[kubernetes]
+symbol = ""
+style = "242"
+format = " [$context(::$namespace)]($style)"
+disabled = false
+
+[docker_context]
+symbol = ""
+style = "242"
+format = " [$context]($style)"
+only_with_files = true
+
+[cmd_duration]
+min_time = 2000
+show_milliseconds = false
+style = "242"
+format = " [$duration]($style)"
+
+[character]
+success_symbol = "[ ](white)"
+error_symbol = "[ ](red)"
+vimcmd_symbol = "[ ](white)"
+

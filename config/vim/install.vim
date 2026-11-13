@@ -5,6 +5,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin()
+  Plug 'fxn/vim-monochrome'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'sheerun/vim-polyglot'
   Plug 'tpope/vim-commentary'
