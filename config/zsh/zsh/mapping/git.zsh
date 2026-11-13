@@ -1,5 +1,0 @@
-alias gst="git status"
-alias gra="git restore ."
-alias grf="git reset --force"
-alias gl="git log"
-alias gcl="git clear ."
