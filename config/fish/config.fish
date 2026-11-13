@@ -15,6 +15,8 @@ if status is-interactive
     for file in ~/.config/fish/functions/__*.fish
         source $file
     end
+
+    fish_add_path ~/.local/bin
 end
 
 source ~/.config/fish/.env
