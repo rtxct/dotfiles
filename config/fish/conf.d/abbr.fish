@@ -17,6 +17,7 @@ if status is-interactive
     abbr --add ga 'git add'
     abbr --add gaa 'git add .'
     abbr --add gc 'git commit'
+    abbr --add gp 'git push'
     abbr --add grst 'git restore'
     abbr --add grsta 'git restore .'
     abbr --add gs 'git stash'
