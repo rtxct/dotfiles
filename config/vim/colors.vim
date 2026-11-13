@@ -4,3 +4,5 @@ highlight markdownH2 guifg=cyan gui=bold
 highlight markdownHeadingRule guifg=green
 highlight markdownRule guifg=yellow
 highlight markdownCo guifg=red
+
+colorscheme monochrome
