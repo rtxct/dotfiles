@@ -2,6 +2,9 @@ include "animations/bloom.kdl"
 
 spawn-at-startup "qs"
 
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+
 spawn-at-startup "awww-daemon"
 spawn-at-startup "awww" "img" "/home/YOUR_USER/.local/share/themes/wallpaper/background.jpg" "--transition-type" "center" "--transition-step" "30" "--transition-fps" "60"
 
@@ -120,15 +123,16 @@ binds {
     Mod+E hotkey-overlay-title="Run an Application: qs menu" { spawn "qs" "ipc" "call" "menu" "toggle"; } 
     Mod+Backspace hotkey-overlay-title="Clipboard History: qs clipboard" { spawn "qs" "ipc" "call" "clipboard" "toggle"; } 
     Mod+Alt+L hotkey-overlay-title="Screen Lock: qs lock" { spawn "qs" "ipc" "call" "lock" "lock"; }
+    Mod+Alt+H hotkey-overlay-title="QuickShell Hiding" { spawn "qs" "ipc" "call" "bars" "toggle"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0; notify-send -a 'Audio' -h string:x-canonical-private-synchronous:volume 'Volume' \"$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)\"%\"}')\""; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-; notify-send -a 'Audio' -h string:x-canonical-private-synchronous:volume 'Volume' \"$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)\"%\"}')\""; }
     
     Alt+M allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; notify-send -a 'Audio' -h string:x-canonical-private-synchronous:mic 'Microphone' \"$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && echo 'Muted' || echo 'Unmuted')\""; }
 
-    XF86AudioPlay allow-when-locked=true { spawn-sh "~/.config/niri/media-notify.sh play-pause"; }
-    XF86AudioPrev allow-when-locked=true { spawn-sh "~/.config/niri/media-notify.sh previous"; }
-    XF86AudioNext allow-when-locked=true { spawn-sh "~/.config/niri/media-notify.sh next"; }
+    XF86AudioPlay allow-when-locked=true { spawn-sh "~/.config/niri/scripts/media-notification.sh play-pause"; }
+    XF86AudioPrev allow-when-locked=true { spawn-sh "~/.config/niri/scripts/media-notification.sh previous"; }
+    XF86AudioNext allow-when-locked=true { spawn-sh "~/.config/niri/scripts/media-notification.sh next"; }
 
     XF86MonBrightnessUp   allow-when-locked=true { spawn-sh "brightnessctl --class=backlight set +10%; notify-send -a 'Brightness' -h string:x-canonical-private-synchronous:brightness 'Brightness' \"$(brightnessctl --class=backlight -m | cut -d, -f4)\""; }
     XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brightnessctl --class=backlight set 10%-; notify-send -a 'Brightness' -h string:x-canonical-private-synchronous:brightness 'Brightness' \"$(brightnessctl --class=backlight -m | cut -d, -f4)\""; }
