@@ -125,6 +125,8 @@ binds {
     Mod+Alt+L hotkey-overlay-title="Screen Lock: qs lock" { spawn "qs" "ipc" "call" "lock" "lock"; }
     Mod+Alt+H hotkey-overlay-title="QuickShell Hiding" { spawn "qs" "ipc" "call" "bars" "toggle"; }
 
+    Mod+T hotkey-overlay-title="Open File Manager" { spawn "strata"; }
+
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0; notify-send -a 'Audio' -h string:x-canonical-private-synchronous:volume 'Volume' \"$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)\"%\"}')\""; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-; notify-send -a 'Audio' -h string:x-canonical-private-synchronous:volume 'Volume' \"$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)\"%\"}')\""; }
     
